@@ -1,7 +1,7 @@
 import openai
 import gradio as gr
 
-openai.api_key = "sk-proj-9btgxh0VitaSeFWux6vHT3BlbkFJj4zyUSoc9k9OBkjR2H4h"
+openai.api_key = "your-api-key"
 
 messages = [{"role": "system", "content": "You are a financial expert that specializes in real estate investment and negotiation"}]
 
