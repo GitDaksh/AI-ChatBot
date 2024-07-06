@@ -1,13 +1,17 @@
-# AI Chatbot for Real Estate Investment and Negotiation
+
+
+---
+
+# AI Chatbot Project
 
 ## Overview
 
-This project utilizes OpenAI's GPT-3.5 model to create an AI chatbot specialized in providing insights and advice related to real estate investment and negotiation.
+This project utilizes OpenAI's GPT-3.5 model to create an AI chatbot that can provide insightful and engaging responses on various topics.
 
 ### Features
 
-- **Real-time Interaction**: Users can engage in conversations with the AI chatbot to get information on real estate investment strategies and negotiation tips.
-- **Customizable Responses**: The chatbot adapts its responses based on user inputs, leveraging natural language processing capabilities of GPT-3.5.
+- **Real-time Interaction**: Users can engage in conversations with the AI chatbot to get information, advice, or just have a chat.
+- **Customizable Responses**: The chatbot adapts its responses based on user inputs, leveraging the natural language processing capabilities of GPT-3.5.
 - **Web Interface**: Includes a user-friendly web interface powered by Gradio for seamless interaction.
 
 ### Models and APIs
@@ -23,6 +27,7 @@ This project utilizes OpenAI's GPT-3.5 model to create an AI chatbot specialized
    ```bash
    git clone https://github.com/yourusername/your-repository.git
    cd your-repository
+   ```
 
 2. Install dependencies:
    ```bash
@@ -59,8 +64,10 @@ system_msg = input("What type of chatbot would you like to create?\n")
 messages.append({"role": "system", "content": system_msg})
 
 print("Your new assistant is ready!")
-while input != "quit()":
+while True:
     message = input()
+    if message.lower() == "quit()":
+        break
     messages.append({"role": "user", "content": message})
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -71,7 +78,7 @@ while input != "quit()":
     print("\n" + reply + "\n")
 ```
 
-#### Model 3: Real Estate Pro Chatbot with Gradio
+#### Model 3: Generic Chatbot with Gradio
 
 ```python
 import openai
@@ -79,7 +86,7 @@ import gradio as gr
 
 openai.api_key = "your-api-key"
 
-messages = [{"role": "system", "content": "You are a financial expert that specializes in real estate investment and negotiation"}]
+messages = [{"role": "system", "content": "You are a helpful assistant."}]
 
 def CustomChatGPT(user_input):
     messages.append({"role": "user", "content": user_input})
@@ -91,7 +98,7 @@ def CustomChatGPT(user_input):
     messages.append({"role": "assistant", "content": ChatGPT_reply})
     return ChatGPT_reply
 
-demo = gr.Interface(fn=CustomChatGPT, inputs="text", outputs="text", title="Real Estate Pro")
+demo = gr.Interface(fn=CustomChatGPT, inputs="text", outputs="text", title="Generic Chatbot")
 demo.launch(share=True)
 ```
 
@@ -108,11 +115,3 @@ Contributions, bug reports, and feature requests are welcome. Please fork the re
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
-
-## Authors
-
-- List the contributors or maintainers of the project here.
-
-```
-
-Copy and paste this template into your `README.md` file. Make sure to replace placeholders such as `"your-api-key"`, `yourusername`, `your-repository`, and adjust any other specific details as needed for your project. This template provides a structured overview of your AI chatbot project, including setup instructions, usage examples, and important notes.
